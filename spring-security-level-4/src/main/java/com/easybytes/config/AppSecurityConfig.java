@@ -13,8 +13,8 @@ public class AppSecurityConfig {
 
 	@Bean
 	SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
-		http.authorizeHttpRequests(requests -> requests.requestMatchers("account", "balance").authenticated()
-			.requestMatchers("contact", "notice").permitAll())
+		http.csrf().disable().authorizeHttpRequests(requests -> requests.requestMatchers("account", "balance").authenticated()
+			.requestMatchers("contact", "notice", "register").permitAll())
 			.formLogin(Customizer.withDefaults())
 			.httpBasic(Customizer.withDefaults());		
 		return http.build();
