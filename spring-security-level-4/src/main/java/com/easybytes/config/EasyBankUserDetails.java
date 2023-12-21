@@ -25,14 +25,14 @@ public class EasyBankUserDetails implements UserDetailsService
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		String userName, password;
 		List<GrantedAuthority> authorities;
-		List<Customer> customer = customerRepository.findByEmail(username);
-		if (customer.size() == 0) {
+		List<Customer> customers = customerRepository.findByEmail(username);
+		if (customers == null || customers.isEmpty()) {
 			throw new UsernameNotFoundException("User details not found for the user : " + username);
 		} else {
-			userName = customer.get(0).getEmail();
-			password = customer.get(0).getPwd();
+			userName = customers.get(0).getEmail();
+			password = customers.get(0).getPwd();
 			authorities = new ArrayList<>();
-			authorities.add(new SimpleGrantedAuthority(customer.get(0).getRole()));
+			authorities.add(new SimpleGrantedAuthority(customers.get(0).getRole()));
 		}
 		return new User(userName, password, authorities);
 	}
