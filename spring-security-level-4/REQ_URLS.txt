@@ -1,0 +1,4 @@
+http://localhost:8004/contact
+http://localhost:8004/notice
+http://localhost:8004/account
+http://localhost:8004/balance
