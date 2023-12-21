@@ -21,6 +21,7 @@ public class AppSecurityConfig {
 		return http.build();
 	}
 	
+	
 	@SuppressWarnings("deprecation")
 	@Bean
 	public InMemoryUserDetailsManager userDetailsService() {
