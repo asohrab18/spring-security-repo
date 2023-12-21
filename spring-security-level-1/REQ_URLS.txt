@@ -1,4 +1,8 @@
 http://localhost:8001/contact
 http://localhost:8001/notice
 http://localhost:8001/account
+<<<<<<< HEAD
 http://localhost:8001/balance
+=======
+http://localhost:8001/balance
+>>>>>>> branch 'master' of https://github.com/asohrab18/spring-security-repo.git
