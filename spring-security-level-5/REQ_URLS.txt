@@ -1,0 +1,15 @@
+POST: 
+http://localhost:8005/register
+Request Body (raw-JSON):
+{
+    "email": "test@yahoo.com",
+    "pwd": "password@1",
+    "role": "user"
+}
+
+http://localhost:8005/my-account
+http://localhost:8005/my-balance
+http://localhost:8005/my-cards
+http://localhost:8005/my-loans
+http://localhost:8005/notices
+http://localhost:8005/contact
