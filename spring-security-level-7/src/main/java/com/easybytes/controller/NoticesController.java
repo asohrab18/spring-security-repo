@@ -22,6 +22,7 @@ public class NoticesController {
 	public ResponseEntity<List<Notice>> getNotices() {
 		List<Notice> notices = noticeRepository.findAllActiveNotices();
 		if (notices != null) {
+			//for 60 seconds, response is saved in cache & subsequent requests get response from cache. After completing 60 seconds, a new subsequent request will hit the backend/DB. 
 			return ResponseEntity.ok().cacheControl(CacheControl.maxAge(60, TimeUnit.SECONDS)).body(notices);
 		} else {
 			return null;
