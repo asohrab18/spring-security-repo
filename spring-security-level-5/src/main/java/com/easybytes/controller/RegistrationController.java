@@ -21,7 +21,7 @@ public class RegistrationController {
 	private PasswordEncoder passwordEncoder;
 
 	@PostMapping("register")
-	public ResponseEntity<String> sayWelcome(@RequestBody Customer customer) {
+	public ResponseEntity<String> registerUser(@RequestBody Customer customer) {
 		ResponseEntity<String> responseEntity = null;
 		Customer savedCustomer = null;
 		try {

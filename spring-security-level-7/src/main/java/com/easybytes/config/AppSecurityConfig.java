@@ -11,16 +11,30 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 public class AppSecurityConfig {
 
-	@SuppressWarnings("removal")
+	/*@SuppressWarnings("removal")
 	@Bean
 	SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
-		http.csrf().disable().authorizeHttpRequests(
+		http.cors().configurationSource(null)
+		
+		
+		.csrf().disable().authorizeHttpRequests(
 		requests -> requests.requestMatchers("/myAccount", "/myBalance", "/myLoans", "/myCards", "/user").authenticated()
 							.requestMatchers("/notices", "/contact", "/register").permitAll())
 				.formLogin(Customizer.withDefaults())
 				.httpBasic(Customizer.withDefaults());
 		return http.build();
-	}
+	}*/
+	
+	@Bean
+    SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
+        http.csrf((csrf) -> csrf.disable())
+                .authorizeHttpRequests((requests) -> requests
+                        .requestMatchers("/myAccount", "/myBalance", "/myLoans", "/myCards").authenticated()
+                        .requestMatchers("/notices", "/contact", "/register").permitAll())
+                .formLogin(Customizer.withDefaults())
+                .httpBasic(Customizer.withDefaults());
+        return http.build();
+    }
 
 	@Bean
 	public PasswordEncoder passwordEncoder() {

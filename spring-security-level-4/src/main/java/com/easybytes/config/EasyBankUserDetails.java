@@ -29,10 +29,11 @@ public class EasyBankUserDetails implements UserDetailsService
 		if (customers == null || customers.isEmpty()) {
 			throw new UsernameNotFoundException("User details not found for the user : " + username);
 		} else {
-			userName = customers.get(0).getEmail();
-			password = customers.get(0).getPwd();
+			Customer c = customers.get(0);
+			userName = c.getEmail();
+			password = c.getPwd();
 			authorities = new ArrayList<>();
-			authorities.add(new SimpleGrantedAuthority(customers.get(0).getRole()));
+			authorities.add(new SimpleGrantedAuthority(c.getRole()));
 		}
 		return new User(userName, password, authorities);
 	}
