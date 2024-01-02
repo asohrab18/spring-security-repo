@@ -23,6 +23,7 @@ import jakarta.servlet.http.HttpServletRequest;
 @Configuration
 public class AppSecurityConfig {
 
+	@SuppressWarnings("removal")
 	@Bean
 	SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
 		CsrfTokenRequestAttributeHandler csrfTokenRequestAttributeHandler = new CsrfTokenRequestAttributeHandler();
