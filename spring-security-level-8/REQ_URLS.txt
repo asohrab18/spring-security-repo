@@ -1,0 +1,31 @@
+POST: 
+http://localhost:8008/register
+Request Body (raw-JSON):
+{
+    "name": "John",
+    "email": "test@yahoo.com",
+    "mobileNumber": "9897123456",
+    "pwd": "password@1",
+    "role": "user",
+    "createDt": "2023-12-26"
+}
+
+
+POST:
+http://localhost:8008/contact
+Request Body (raw-JSON):
+{
+    "contactName": "Michell",
+    "contactEmail": "obama@yahoo.com",
+    "subject": "Product Information",
+    "message": "What is the latest release?"
+}
+
+
+http://localhost:8008/user?name=Happy
+http://localhost:8008/myAccount?id=1
+http://localhost:8008/myBalance?id=1
+http://localhost:8008/myCards?id=1
+http://localhost:8008/myLoans?id=1
+http://localhost:8008/notices
+
