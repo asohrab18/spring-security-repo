@@ -47,9 +47,14 @@ public class AppSecurityConfig {
 				.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()))
 		.addFilterAfter(new CsrfCookieFilter(), BasicAuthenticationFilter.class)
 
-		.authorizeHttpRequests(requests -> requests.requestMatchers("/myAccount", "/myBalance", "/myLoans", "/myCards")
-								.authenticated().requestMatchers("/notices", "/contact", "/register").permitAll())
-				.formLogin(Customizer.withDefaults()).httpBasic(Customizer.withDefaults());
+		.authorizeHttpRequests(requests -> requests.requestMatchers("/myAccount").hasAuthority("VIEWACCOUNT")
+				.requestMatchers("/myBalance").hasAnyAuthority("VIEWACCOUNT","VIEWBALANCE")
+				.requestMatchers("/myLoans").hasAuthority("VIEWLOANS")
+				.requestMatchers("/myCards").hasAuthority("VIEWCARDS")
+				.requestMatchers("/user").authenticated()
+				.requestMatchers("/notices", "/contact", "/register").permitAll())
+				.formLogin(Customizer.withDefaults())
+				.httpBasic(Customizer.withDefaults());
 		return http.build();
 	}
 
